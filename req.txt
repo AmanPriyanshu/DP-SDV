@@ -4,3 +4,4 @@ sdmetrics
 graphviz
 ctgan
 pomegranate
+deepecho

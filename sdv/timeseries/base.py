@@ -183,7 +183,7 @@ class BaseTimeseriesModel:
         context = context.groupby(self._entity_columns).first().reset_index()
         self._context_model.fit(context)
 
-    def fit(self, timeseries_data):
+    def fit(self, timeseries_data, noise_multiplier=None, max_grad_norm=None):
         """Fit this model to the data.
 
         Args:
@@ -207,7 +207,7 @@ class BaseTimeseriesModel:
             self._fit_context_model(transformed)
 
         LOGGER.debug('Fitting %s model to table %s', self.__class__.__name__, self._metadata.name)
-        self._fit(transformed)
+        self._fit(transformed, noise_multiplier=noise_multiplier, max_grad_norm=max_grad_norm)
 
     def get_metadata(self):
         """Get metadata about the table.

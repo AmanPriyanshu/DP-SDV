@@ -1,0 +1,50 @@
+{
+    "tables": {
+        "nasdaq100_2019": {
+            "path": "nasdaq100_2019.csv",
+            "target": "Sector",
+            "sequence_index": "Date",
+            "entity_columns": [
+                "Symbol"
+            ],
+            "context_columns": [
+                "MarketCap",
+                "Sector",
+                "Industry"
+            ],
+            "fields": {
+                "Symbol": {
+                    "type": "id",
+                    "subtype": "string",
+                    "regex": "[A-Z]{4}"
+                },
+                "Date": {
+                    "type": "datetime",
+                    "format": "%Y-%m-%d"
+                },
+                "Open": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "Close": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "Volume": {
+                    "type": "numerical",
+                    "subtype": "integer"
+                },
+                "MarketCap": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "Sector": {
+                    "type": "categorical"
+                },
+                "Industry": {
+                    "type": "categorical"
+                }
+            }
+        }
+    }
+}
