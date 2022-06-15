@@ -4,9 +4,9 @@
 
 """Top-level package for SDV."""
 
-__author__ = """MIT Data To AI Lab"""
-__email__ = 'dailabmit@gmail.com'
-__version__ = '0.15.1.dev0'
+__author__ = "Aman Priyanshu"
+__email__ = 'amanpriyanshusms2001@gmail.com'
+__version__ = '0.0.0'
 
 from sdv import constraints, evaluation, metadata, relational, tabular
 from sdv.demo import get_available_demos, load_demo
