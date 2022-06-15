@@ -251,6 +251,19 @@ class GaussianCopula(BaseTabularModel):
 
         self._update_metadata()
 
+    def fit_dp(self, data, eps=None):
+        self.fit(data)
+        datum = self.get_parameters()
+        arr = list(datum.keys())
+        arr_ = [i for i in arr if '.' in i]
+        _arr = [i for i in arr if '.' not in i and i!='num_rows']
+        highest_num = max([int(i[i.rindex('_')+1:]) for i in _arr])
+        for key in datum.keys():
+            if 'covariance' in key:
+                if eps is not None:
+                    datum[key] = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(eps)))
+        self.set_parameters(datum)
+
     def sample_conditions(self, conditions, batch_size=None, randomize_samples=True,
                           output_file_path=None):
         """Sample rows from this table with the given conditions.
@@ -503,6 +516,7 @@ class GaussianCopula(BaseTabularModel):
             dict:
                 Copula flatten parameters.
         """
+        print("Applying Laplacian Noise to Covariance Matrix")
         parameters = unflatten_dict(parameters)
         parameters = self._rebuild_gaussian_copula(parameters)
 

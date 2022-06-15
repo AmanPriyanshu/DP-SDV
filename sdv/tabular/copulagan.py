@@ -184,7 +184,7 @@ class CopulaGAN(CTGAN):
             if isinstance(transformer, GaussianCopulaTransformer)
         }
 
-    def _fit(self, table_data):
+    def _fit(self, table_data, noise_multiplier=None, max_grad_norm=None):
         """Fit the model to the table.
 
         Args:
@@ -209,7 +209,7 @@ class CopulaGAN(CTGAN):
         self._ht = HyperTransformer(field_transformers=transformers)
         table_data = self._ht.fit_transform(table_data)
 
-        super()._fit(table_data)
+        super()._fit(table_data, noise_multiplier=noise_multiplier, max_grad_norm=max_grad_norm)
 
     def _sample(self, num_rows, conditions=None):
         """Sample the indicated number of rows from the model.

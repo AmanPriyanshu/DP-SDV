@@ -125,7 +125,7 @@ class BaseTabularModel:
             self._metadata = table_metadata
             self._metadata_fitted = table_metadata.fitted
 
-    def fit(self, data):
+    def fit(self, data, noise_multiplier=None, max_grad_norm=None):
         """Fit this model to the data.
 
         If the table metadata has not been given, learn it from the data.
@@ -154,7 +154,10 @@ class BaseTabularModel:
         if self._metadata.get_dtypes(ids=False):
             LOGGER.debug(
                 'Fitting %s model to table %s', self.__class__.__name__, self._metadata.name)
-            self._fit(transformed)
+            if noise_multiplier is not None:
+                self._fit(transformed, noise_multiplier, max_grad_norm)
+            else:
+                self._fit(transformed)
 
     def get_metadata(self):
         """Get metadata about the table.
