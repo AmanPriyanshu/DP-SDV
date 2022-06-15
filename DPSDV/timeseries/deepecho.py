@@ -16,7 +16,7 @@ from tqdm import tqdm
 from deepecho import PARModel
 from deepecho.sequences import assemble_sequences
 
-from sdv.timeseries.base import BaseTimeseriesModel
+from DPSDV.timeseries.base import BaseTimeseriesModel
 import torch
 
 class PARNet(torch.nn.Module):

@@ -3,7 +3,7 @@
 This subpackage exists only to enable importing sdmetrics as part of sdv.
 """
 
-from sdv.metrics import relational, tabular, timeseries
+from DPSDV.metrics import relational, tabular, timeseries
 
 __all__ = [
     'relational',

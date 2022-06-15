@@ -5,10 +5,10 @@
 import pickle
 import warnings
 
-from sdv.errors import NotFittedError
-from sdv.relational.hma import HMA1
-from sdv.tabular.copulas import GaussianCopula
-from sdv.utils import get_package_versions, throw_version_mismatch_warning
+from DPSDV.errors import NotFittedError
+from DPSDV.relational.hma import HMA1
+from DPSDV.tabular.copulas import GaussianCopula
+from DPSDV.utils import get_package_versions, throw_version_mismatch_warning
 
 
 class SDV:

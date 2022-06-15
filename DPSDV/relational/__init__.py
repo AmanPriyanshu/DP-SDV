@@ -1,6 +1,6 @@
 """Relational models subpackage."""
 
-from sdv.relational.hma import HMA1
+from DPSDV.relational.hma import HMA1
 
 __all__ = (
     'HMA1',

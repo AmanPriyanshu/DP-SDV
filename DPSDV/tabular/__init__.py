@@ -1,8 +1,8 @@
 """Models for tabular data."""
 
-from sdv.tabular.copulagan import CopulaGAN
-from sdv.tabular.copulas import GaussianCopula
-from sdv.tabular.ctgan import CTGAN, TVAE
+from DPSDV.tabular.copulagan import CopulaGAN
+from DPSDV.tabular.copulas import GaussianCopula
+from DPSDV.tabular.ctgan import CTGAN, TVAE
 
 __all__ = (
     'GaussianCopula',

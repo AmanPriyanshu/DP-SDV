@@ -5,8 +5,8 @@ import logging
 import numpy as np
 import pandas as pd
 
-from sdv.relational.base import BaseRelationalModel
-from sdv.tabular.copulas import GaussianCopula
+from DPSDV.relational.base import BaseRelationalModel
+from DPSDV.tabular.copulas import GaussianCopula
 
 LOGGER = logging.getLogger(__name__)
 

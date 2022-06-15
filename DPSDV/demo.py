@@ -12,7 +12,7 @@ import pandas as pd
 import scipy as sp
 from faker import Faker
 
-from sdv.metadata import Metadata, Table
+from DPSDV.metadata import Metadata, Table
 
 LOGGER = logging.getLogger(__name__)
 

@@ -9,9 +9,9 @@ import copulas.univariate
 import numpy as np
 import scipy
 
-from sdv.metadata import Table
-from sdv.tabular.base import BaseTabularModel, NonParametricError
-from sdv.tabular.utils import flatten_dict, unflatten_dict
+from DPSDV.metadata import Table
+from DPSDV.tabular.base import BaseTabularModel, NonParametricError
+from DPSDV.tabular.utils import flatten_dict, unflatten_dict
 
 LOGGER = logging.getLogger(__name__)
 

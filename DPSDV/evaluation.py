@@ -3,7 +3,7 @@
 import pandas as pd
 import sdmetrics
 
-from sdv.metadata.dataset import Metadata
+from DPSDV.metadata.dataset import Metadata
 
 
 def _validate_arguments(synthetic_data, real_data, metadata, root_path, table_name):

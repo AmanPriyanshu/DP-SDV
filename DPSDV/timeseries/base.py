@@ -8,9 +8,9 @@ import uuid
 import pandas as pd
 import rdt
 
-from sdv.metadata import Table
-from sdv.tabular.copulas import GaussianCopula
-from sdv.utils import get_package_versions, throw_version_mismatch_warning
+from DPSDV.metadata import Table
+from DPSDV.tabular.copulas import GaussianCopula
+from DPSDV.utils import get_package_versions, throw_version_mismatch_warning
 
 LOGGER = logging.getLogger(__name__)
 

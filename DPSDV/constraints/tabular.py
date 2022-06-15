@@ -34,9 +34,9 @@ import uuid
 import numpy as np
 import pandas as pd
 
-from sdv.constraints.base import Constraint, import_object
-from sdv.constraints.errors import MissingConstraintColumnError
-from sdv.constraints.utils import is_datetime_type, logit, sigmoid
+from DPSDV.constraints.base import Constraint, import_object
+from DPSDV.constraints.errors import MissingConstraintColumnError
+from DPSDV.constraints.utils import is_datetime_type, logit, sigmoid
 
 INEQUALITY_TO_OPERATION = {
     '>': np.greater,

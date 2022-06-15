@@ -9,10 +9,10 @@ import pandas as pd
 import rdt
 from faker import Faker
 
-from sdv.constraints.base import Constraint
-from sdv.constraints.errors import MissingConstraintColumnError, MultipleConstraintsErrors
-from sdv.metadata.errors import MetadataError, MetadataNotFittedError
-from sdv.metadata.utils import strings_from_regex
+from DPSDV.constraints.base import Constraint
+from DPSDV.constraints.errors import MissingConstraintColumnError, MultipleConstraintsErrors
+from DPSDV.metadata.errors import MetadataError, MetadataNotFittedError
+from DPSDV.metadata.utils import strings_from_regex
 
 LOGGER = logging.getLogger(__name__)
 

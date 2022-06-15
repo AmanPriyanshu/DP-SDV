@@ -8,9 +8,9 @@ import warnings
 import numpy as np
 import rdt
 
-from sdv.metadata import Table
-from sdv.tabular import GaussianCopula
-from sdv.utils import get_package_versions, throw_version_mismatch_warning
+from DPSDV.metadata import Table
+from DPSDV.tabular import GaussianCopula
+from DPSDV.utils import get_package_versions, throw_version_mismatch_warning
 
 LOGGER = logging.getLogger(__name__)
 

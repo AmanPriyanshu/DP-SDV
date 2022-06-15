@@ -13,10 +13,10 @@ import copulas
 import numpy as np
 import pandas as pd
 
-from sdv.errors import ConstraintsNotMetError
-from sdv.metadata import Table
-from sdv.tabular.utils import check_num_rows, handle_sampling_error, progress_bar_wrapper
-from sdv.utils import get_package_versions, throw_version_mismatch_warning
+from DPSDV.errors import ConstraintsNotMetError
+from DPSDV.metadata import Table
+from DPSDV.tabular.utils import check_num_rows, handle_sampling_error, progress_bar_wrapper
+from DPSDV.utils import get_package_versions, throw_version_mismatch_warning
 
 LOGGER = logging.getLogger(__name__)
 COND_IDX = str(uuid.uuid4())

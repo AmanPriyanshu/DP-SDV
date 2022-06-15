@@ -10,9 +10,9 @@ import numpy as np
 import pandas as pd
 from rdt import HyperTransformer, transformers
 
-from sdv.constraints import Constraint
-from sdv.metadata import visualization
-from sdv.metadata.errors import MetadataError
+from DPSDV.constraints import Constraint
+from DPSDV.metadata import visualization
+from DPSDV.metadata.errors import MetadataError
 
 LOGGER = logging.getLogger(__name__)
 

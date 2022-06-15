@@ -11,8 +11,8 @@ from copulas.multivariate.gaussian import GaussianMultivariate
 from copulas.univariate import GaussianUnivariate
 from rdt import HyperTransformer
 
-from sdv.constraints.errors import MissingConstraintColumnError
-from sdv.errors import ConstraintsNotMetError
+from DPSDV.constraints.errors import MissingConstraintColumnError
+from DPSDV.errors import ConstraintsNotMetError
 
 LOGGER = logging.getLogger(__name__)
 

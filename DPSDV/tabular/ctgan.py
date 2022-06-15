@@ -4,7 +4,7 @@ import numpy as np
 from ctgan import CTGANSynthesizer, TVAESynthesizer
 from ctgan.data_transformer import DataTransformer
 from ctgan.data_sampler import DataSampler
-from sdv.tabular.base import BaseTabularModel
+from DPSDV.tabular.base import BaseTabularModel
 import torch
 
 def _loss_function(recon_x, x, sigmas, mu, logvar, output_info, factor):

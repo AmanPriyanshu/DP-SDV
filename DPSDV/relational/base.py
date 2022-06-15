@@ -7,9 +7,9 @@ import pickle
 import numpy as np
 import pandas as pd
 
-from sdv.errors import NotFittedError
-from sdv.metadata import Metadata, utils
-from sdv.utils import get_package_versions, throw_version_mismatch_warning
+from DPSDV.errors import NotFittedError
+from DPSDV.metadata import Metadata, utils
+from DPSDV.utils import get_package_versions, throw_version_mismatch_warning
 
 LOGGER = logging.getLogger(__name__)
 

@@ -3,7 +3,7 @@
 from rdt import HyperTransformer
 from rdt.transformers import GaussianCopulaTransformer
 
-from sdv.tabular.ctgan import CTGAN
+from DPSDV.tabular.ctgan import CTGAN
 
 
 class CopulaGAN(CTGAN):
