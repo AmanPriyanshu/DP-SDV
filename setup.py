@@ -8,9 +8,6 @@ from setuptools import setup, find_packages
 with open('README.md', encoding='utf-8') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.md', encoding='utf-8') as history_file:
-    history = history_file.read()
-
 install_requires = [
     'Faker>=3.0.0,<10',
     'graphviz>=0.13.2,<1',
@@ -104,7 +101,7 @@ setup(
     install_requires=install_requires,
     keywords='differential-privacy sdv synthetic-data synhtetic-data-generation timeseries single-table multi-table',
     license='MIT license',
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     long_description_content_type='text/markdown',
     name='sdv',
     packages=find_packages(include=['sdv', 'sdv.*']),
