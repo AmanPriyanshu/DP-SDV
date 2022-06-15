@@ -1,0 +1,71 @@
+{
+    "tables": {
+        "student_placements": {
+            "fields": {
+                "start_date": {
+                    "type": "datetime",
+                    "format": "%Y-%m-%d"
+                },
+                "end_date": {
+                    "type": "datetime",
+                    "format": "%Y-%m-%d"
+                },
+                "salary": {
+                    "type": "numerical",
+                    "subtype": "integer"
+                },
+                "duration": {
+                    "type": "categorical"
+                },
+                "student_id": {
+                    "type": "id",
+                    "subtype": "integer"
+                },
+                "high_perc": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "high_spec": {
+                    "type": "categorical"
+                },
+                "mba_spec": {
+                    "type": "categorical"
+                },
+                "second_perc": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "gender": {
+                    "type": "categorical"
+                },
+                "degree_perc": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "placed": {
+                    "type": "boolean"
+                },
+                "experience_years": {
+                    "type": "numerical",
+                    "subtype": "integer"
+                },
+                "employability_perc": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "mba_perc": {
+                    "type": "numerical",
+                    "subtype": "float"
+                },
+                "work_experience": {
+                    "type": "boolean"
+                },
+                "degree_type": {
+                    "type": "categorical"
+                }
+            },
+            "path": "student_placements.csv",
+            "primary_key": "student_id"
+        }
+    }
+}
