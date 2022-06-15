@@ -7,7 +7,7 @@ model.fit(tables)
 new_data = model.sample(num_rows=100)
 print(new_data)
 for key, item in new_data.items():
-	item.to_csv(key+'_normal.csv', index=False)
+	item.to_csv('./multi_demo_results/'+key+'_normal.csv', index=False)
 
 print("DP-TIME")
 
@@ -17,4 +17,4 @@ model.fit(tables, eps=1e-5)
 new_data = model.sample(num_rows=100)
 print(new_data)
 for key, item in new_data.items():
-	item.to_csv(key+'_dp.csv', index=False)
+	item.to_csv('./multi_demo_results/'+key+'_dp.csv', index=False)
