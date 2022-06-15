@@ -88,7 +88,12 @@ class HMA1(BaseRelationalModel):
 
             try:
                 model = self._model(table_metadata=table_meta)
-                model.fit(child_rows.reset_index(drop=True))
+                model.printed = True
+                ## CHANGE HERE
+                if self.eps is None:
+                    model.fit(child_rows.reset_index(drop=True))
+                else:
+                    model.fit_dp(child_rows.reset_index(drop=True), eps=self.eps)
                 row = model.get_parameters()
                 row = pd.Series(row)
                 row.index = f'__{child_name}__{foreign_key}__' + row.index
@@ -248,7 +253,12 @@ class HMA1(BaseRelationalModel):
         LOGGER.info('Fitting %s for table %s; shape: %s', self._model.__name__,
                     table_name, table.shape)
         model = self._model(**self._model_kwargs, table_metadata=table_meta)
-        model.fit(table)
+        model.printed = True
+        ## CHANGE HERE
+        if self.eps is None:
+            model.fit(table)
+        else:
+            model.fit_dp(table, eps=self.eps)
         self._models[table_name] = model
 
         if primary_key:
@@ -261,7 +271,7 @@ class HMA1(BaseRelationalModel):
 
         return table
 
-    def _fit(self, tables=None):
+    def _fit(self, tables=None, eps=None):
         """Fit this HMA1 instance to the dataset data.
 
         Args:
@@ -270,6 +280,7 @@ class HMA1(BaseRelationalModel):
                 values.  If ``None`` is given, the tables will be loaded from the paths
                 indicated in ``metadata``. Defaults to ``None``.
         """
+        self.eps = eps
         self.metadata.validate(tables)
         if tables:
             tables = tables.copy()

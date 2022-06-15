@@ -134,6 +134,7 @@ class TabularPreset():
         for key in datum.keys():
             if 'covariance' in key:
                 if self.eps is not None:
+                    print("Applying Laplacian Noise to Covariance Matrix")
                     datum[key] = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(self.eps)))
         self._model.set_parameters(datum)
 

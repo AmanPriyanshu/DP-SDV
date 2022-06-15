@@ -40,7 +40,7 @@ class BaseRelationalModel:
         self._primary_key_generators = dict()
         self._remaining_primary_keys = dict()
 
-    def _fit(self, tables=None):
+    def _fit(self, tables=None, eps=None):
         """Fit this relational model instance to the dataset data.
 
         Args:
@@ -51,7 +51,7 @@ class BaseRelationalModel:
         """
         raise NotImplementedError()
 
-    def fit(self, tables=None):
+    def fit(self, tables=None, eps=None):
         """Fit this relational model instance to the dataset data.
 
         Args:
@@ -60,7 +60,7 @@ class BaseRelationalModel:
                 values.  If ``None`` is given, the tables will be loaded from the paths
                 indicated in ``metadata``. Defaults to ``None``.
         """
-        self._fit(tables)
+        self._fit(tables, eps)
         self.fitted = True
 
     def _reset_primary_keys_generators(self):

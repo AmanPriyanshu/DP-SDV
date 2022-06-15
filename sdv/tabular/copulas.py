@@ -144,6 +144,8 @@ class GaussianCopula(BaseTabularModel):
                  categorical_transformer=None, rounding='auto', min_value='auto',
                  max_value='auto'):
 
+        self.printed = False
+
         if isinstance(table_metadata, dict):
             table_metadata = Table.from_dict(table_metadata)
 
@@ -261,6 +263,9 @@ class GaussianCopula(BaseTabularModel):
         for key in datum.keys():
             if 'covariance' in key:
                 if eps is not None:
+                    if self.printed==False:
+                        print("Applying Laplacian Noise to Covariance Matrix")
+                        self.printed = True
                     datum[key] = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(eps)))
         self.set_parameters(datum)
 
@@ -516,7 +521,6 @@ class GaussianCopula(BaseTabularModel):
             dict:
                 Copula flatten parameters.
         """
-        print("Applying Laplacian Noise to Covariance Matrix")
         parameters = unflatten_dict(parameters)
         parameters = self._rebuild_gaussian_copula(parameters)
 
