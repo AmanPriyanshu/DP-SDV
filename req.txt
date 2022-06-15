@@ -3,3 +3,4 @@ copulas
 sdmetrics
 graphviz
 ctgan
+pomegranate

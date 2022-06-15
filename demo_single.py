@@ -1,17 +1,38 @@
 from sdv.demo import load_tabular_demo
 from sdv.lite import TabularPreset
 from sdv.tabular import GaussianCopula, CopulaGAN, CTGAN, TVAE
+from sdv.evaluation import evaluate
+from sdv.metrics.tabular import BNLikelihood, BNLogLikelihood, GMLogLikelihood, LogisticDetection, SVCDetection, NumericalLR, NumericalMLP, NumericalSVR
 import warnings
+import pandas as pd
 warnings.filterwarnings("ignore")
 
 metadata, data = load_tabular_demo('student_placements', metadata=True)
 print(data.head())
 
+def compute_results(synthetic_data, data):
+	r = evaluate(synthetic_data, data, metrics=['CSTest', 'KSTest'], aggregate=False)
+	p = {'CSTest': r.raw_score[0], 'KSTest': r.raw_score[1]}
+	metrics_arr = [BNLikelihood, BNLogLikelihood, GMLogLikelihood]
+	metrics_arr_ = [LogisticDetection, SVCDetection]
+	for m in metrics_arr:
+		p.update({m.__name__: m.compute(data.fillna(0), synthetic_data.fillna(0))})
+	for m in metrics_arr_:
+		p.update({m.__name__: m.compute(data, synthetic_data)})
+	metrics_arr__ = [NumericalLR, NumericalMLP, NumericalSVR]
+	for m in metrics_arr__:
+		p.update({'PRIV_METRIC_'+m.__name__: m.compute(data.fillna(0),synthetic_data.fillna(0),key_fields=['second_perc', 'mba_perc', 'degree_perc'],sensitive_fields=['salary'])})
+	return p
+
+performance = []
 print('-'*40,'\n')
 model = TabularPreset(name='FAST_ML', metadata=metadata, eps=1)
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
-print('FAST_ML')
+print('FAST_ML-DP')
+r = {'name':'FAST_ML-DP'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/FAST_ML_dp.csv", index=False)
 
 print('-'*40,'\n')
@@ -19,14 +40,19 @@ model = TabularPreset(name='FAST_ML', metadata=metadata)
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
 print('FAST_ML')
+r = {'name':'FAST_ML'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/FAST_ML_normal.csv", index=False)
 
 print('-'*40, '\n')
 model = GaussianCopula()
 model.fit_dp(data, eps=1)
 synthetic_data = model.sample(num_rows=100)
-print('Gaussian Copula')
-print(synthetic_data.head())
+print('Gaussian Copula-DP')
+r = {'name':'Gaussian Copula-DP'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/GaussianCopula_dp.csv", index=False)
 
 print('-'*40, '\n')
@@ -34,14 +60,19 @@ model = GaussianCopula()
 model.fit_dp(data)
 synthetic_data = model.sample(num_rows=100)
 print('Gaussian Copula')
-print(synthetic_data.head())
+r = {'name':'Gaussian Copula'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/GaussianCopula_normal.csv", index=False)
 
 print('-'*40, '\n')
 model = CTGAN()
 model.fit(data, noise_multiplier=1.4, max_grad_norm=1.0)
 synthetic_data = model.sample(num_rows=100)
-print('CT-GAN')
+print('CT-GAN-DP')
+r = {'name':'CT-GAN-DP'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 print(synthetic_data.head())
 synthetic_data.to_csv("./single_demo_results/CTGAN_dp.csv", index=False)
 
@@ -50,15 +81,19 @@ model = CTGAN()
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
 print('CT-GAN')
-print(synthetic_data.head())
+r = {'name':'CT-GAN'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/CTGAN_normal.csv", index=False)
 
 print('-'*40, '\n')
 model = CopulaGAN()
 model.fit(data, noise_multiplier=1.4, max_grad_norm=1.0)
 synthetic_data = model.sample(num_rows=100)
-print('Copula-GAN')
-print(synthetic_data.head())
+print('Copula-GAN-DP')
+r = {'name':'Copula-GAN-DP'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/CopulaGAN_dp.csv", index=False)
 
 print('-'*40, '\n')
@@ -66,15 +101,19 @@ model = CopulaGAN()
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
 print('Copula-GAN')
-print(synthetic_data.head())
+r = {'name':'Copula-GAN'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/CopulaGAN_normal.csv", index=False)
 
 print('-'*40, '\n')
 model = TVAE()
 model.fit(data, noise_multiplier=1e-3, max_grad_norm=1.0)
 synthetic_data = model.sample(num_rows=100)
-print('TVAE')
-print(synthetic_data.head())
+print('TVAE-DP')
+r = {'name':'TVAE-DP'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/TVAE_dp.csv", index=False)
 
 print('-'*40, '\n')
@@ -82,5 +121,17 @@ model = TVAE()
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
 print('TVAE')
-print(synthetic_data.head())
+r = {'name':'TVAE'}
+r.update(compute_results(synthetic_data, data))
+performance.append(r)
 synthetic_data.to_csv("./single_demo_results/TVAE_normal.csv", index=False)
+
+df = {}
+for key in performance[0].keys():
+	df.update({key: []})
+for key in performance[0].keys():
+	for row in performance:
+		df[key].append(row[key])
+
+df = pd.DataFrame(df)
+df.to_csv("performance_demo_single", index=False)
