@@ -1,5 +1,5 @@
-from sdv.demo import load_timeseries_demo
-from sdv.timeseries import PAR
+from DPSDV.demo import load_timeseries_demo
+from DPSDV.timeseries import PAR
 
 data = load_timeseries_demo()
 entity_columns = ['Symbol']

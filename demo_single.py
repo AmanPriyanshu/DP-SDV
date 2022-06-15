@@ -1,8 +1,8 @@
-from sdv.demo import load_tabular_demo
-from sdv.lite import TabularPreset
-from sdv.tabular import GaussianCopula, CopulaGAN, CTGAN, TVAE
-from sdv.evaluation import evaluate
-from sdv.metrics.tabular import BNLikelihood, BNLogLikelihood, GMLogLikelihood, LogisticDetection, SVCDetection, NumericalLR, NumericalMLP, NumericalSVR
+from DPSDV.demo import load_tabular_demo
+from DPSDV.lite import TabularPreset
+from DPSDV.tabular import GaussianCopula, CopulaGAN, CTGAN, TVAE
+from DPSDV.evaluation import evaluate
+from DPSDV.metrics.tabular import BNLikelihood, BNLogLikelihood, GMLogLikelihood, LogisticDetection, SVCDetection, NumericalLR, NumericalMLP, NumericalSVR
 import warnings
 import pandas as pd
 warnings.filterwarnings("ignore")

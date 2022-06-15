@@ -1,5 +1,5 @@
-from sdv import load_demo
-from sdv.relational import HMA1
+from DPSDV import load_demo
+from DPSDV.relational import HMA1
 
 metadata, tables = load_demo(metadata=True)
 model = HMA1(metadata)

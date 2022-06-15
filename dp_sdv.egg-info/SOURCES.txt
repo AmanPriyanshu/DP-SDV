@@ -1,8 +1,0 @@
-README.md
-setup.py
-dp_sdv.egg-info/PKG-INFO
-dp_sdv.egg-info/SOURCES.txt
-dp_sdv.egg-info/dependency_links.txt
-dp_sdv.egg-info/not-zip-safe
-dp_sdv.egg-info/requires.txt
-dp_sdv.egg-info/top_level.txt
