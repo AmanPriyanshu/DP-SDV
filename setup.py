@@ -103,7 +103,7 @@ setup(
     license='MIT license',
     long_description=readme,
     long_description_content_type='text/markdown',
-    name='sdv',
+    name='dp_sdv',
     packages=find_packages(include=['sdv', 'sdv.*']),
     python_requires='>=3.6,<3.10',
     setup_requires=setup_requires,

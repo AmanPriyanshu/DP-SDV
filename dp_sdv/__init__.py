@@ -8,10 +8,10 @@ __author__ = "Aman Priyanshu"
 __email__ = 'amanpriyanshusms2001@gmail.com'
 __version__ = '0.0.0'
 
-from sdv import constraints, evaluation, metadata, relational, tabular
-from sdv.demo import get_available_demos, load_demo
-from sdv.metadata import Metadata, Table
-from sdv.sdv import SDV
+from dp_sdv import constraints, evaluation, metadata, relational, tabular
+from dp_sdv.demo import get_available_demos, load_demo
+from dp_sdv.metadata import Metadata, Table
+from dp_sdv.sdv import SDV
 
 __all__ = (
     'demo',
