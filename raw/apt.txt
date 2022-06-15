@@ -1,3 +1,0 @@
-# apt-get requirements for development and mybinder environment
-graphviz
-pandoc

@@ -1,2 +1,0 @@
-# Requirements for development and mybinder environment
--e .[dev]
