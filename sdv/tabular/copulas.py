@@ -266,7 +266,7 @@ class GaussianCopula(BaseTabularModel):
                     if self.printed==False:
                         print("Applying Laplacian Noise to Covariance Matrix")
                         self.printed = True
-                    datum[key] = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(eps)))
+                    datum[key] += np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(eps)))
         self.set_parameters(datum)
 
     def sample_conditions(self, conditions, batch_size=None, randomize_samples=True,

@@ -13,7 +13,7 @@ print("DP-TIME")
 
 metadata, tables = load_demo(metadata=True)
 model = HMA1(metadata)
-model.fit(tables, eps=1e-5)
+model.fit(tables, eps=1e5)
 new_data = model.sample(num_rows=100)
 print(new_data)
 for key, item in new_data.items():

@@ -47,6 +47,7 @@ class TabularPreset():
 
         self.name = name
         self.eps = eps
+        self.printed = False
 
         if metadata is None:
             warnings.warn('No metadata provided. Metadata will be automatically '
@@ -134,8 +135,10 @@ class TabularPreset():
         for key in datum.keys():
             if 'covariance' in key:
                 if self.eps is not None:
-                    print("Applying Laplacian Noise to Covariance Matrix")
-                    datum[key] = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(self.eps)))
+                    if self.printed==False:
+                        print("Applying Laplacian Noise to Covariance Matrix")
+                        self.printed = True
+                    datum[key] += np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(self.eps)))
         self._model.set_parameters(datum)
 
     def _postprocess_sampled(self, sampled):
