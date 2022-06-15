@@ -109,7 +109,7 @@ setup(
     setup_requires=setup_requires,
     test_suite='tests',
     tests_require=tests_require,
-    url='https://github.com/AmanPriyanshu/DP-SDV',
+    url='https://github.com/AmanPriyanshu/DPSDV',
     version='0.0.0',
     zip_safe=False,
 )
