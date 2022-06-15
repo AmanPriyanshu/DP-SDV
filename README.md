@@ -24,18 +24,18 @@
 pip install dp-sdv
 ```
 
-# Quickstart
+## Quickstart
 
 In this short tutorial we will guide you through a series of steps that will help you
 getting started using **SDV**.
 
-## 1. Model the dataset using SDV
+### 1. Model the dataset using SDV
 
 To model a multi table, relational dataset, we follow two steps. In the first step, we will load
 the data and configures the meta data. In the second step, we will use the sdv API to fit and
 save a hierarchical model. We will cover these two steps in this section using an example dataset.
 
-### Step 1: Load example data
+#### Step 1: Load example data
 
 **SDV** comes with a toy dataset to play with, which can be loaded using the `sdv.load_demo`
 function:
@@ -100,7 +100,7 @@ The returned objects contain the following information:
 }
 ```
 
-### 2. Fit a model using the SDV API.
+#### Step 2: Fit a model using the SDV API.
 
 First, we build a hierarchical statistical model of the data using **SDV**. For this we will
 create an instance of the `sdv.SDV` class and use its `fit` method.
@@ -110,36 +110,47 @@ primary key-foreign key relationships and learn the probability distributions of
 the columns.
 
 ```python3
-from sdv import SDV
+from sdv.relational import HMA1
 
-sdv = SDV()
-sdv.fit(metadata, tables)
+model = HMA1(metadata)
+model.fit(tables)
 ```
 
-Once the modeling has finished, you can save your fitted `SDV` instance for later usage
+OR
+
+```python3
+from sdv.relational import HMA1
+
+model = HMA1(metadata)
+model.fit(tables, eps=1e2)
+```
+
+to add differential privacy epsilon through argument `eps=1e2`
+
+Once the modeling has finished, you can save your fitted `model` instance for later usage
 using the `save` method of your instance.
 
 ```python3
-sdv.save('sdv.pkl')
+model.save('sdv.pkl')
 ```
 
 The generated `pkl` file will not include any of the original data in it, so it can be
 safely sent to where the synthetic data will be generated without any privacy concerns.
 
-## 2. Sample data from the fitted model
+### 2. Sample data from the fitted model
 
 In order to sample data from the fitted model, we will first need to load it from its
 `pkl` file. Note that you can skip this step if you are running all the steps sequentially
 within the same python session.
 
 ```python3
-sdv = SDV.load('sdv.pkl')
+model = HMA1.load('sdv.pkl')
 ```
 
 After loading the instance, we can sample synthetic data by calling its `sample` method.
 
 ```python3
-samples = sdv.sample()
+samples = model.sample()
 ```
 
 The output will be a dictionary with the same structure as the original `tables` dict,
