@@ -37,9 +37,11 @@ DPSDV/sampling/__init__.py
 DPSDV/sampling/tabular.py
 DPSDV/tabular/__init__.py
 DPSDV/tabular/base.py
+DPSDV/tabular/base_mwem.py
 DPSDV/tabular/copulagan.py
 DPSDV/tabular/copulas.py
 DPSDV/tabular/ctgan.py
+DPSDV/tabular/mwem.py
 DPSDV/tabular/utils.py
 DPSDV/timeseries/__init__.py
 DPSDV/timeseries/base.py
