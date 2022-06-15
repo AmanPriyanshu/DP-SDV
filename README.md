@@ -21,7 +21,7 @@
 **Using `pip`:**
 
 ```bash
-pip install dp-sdv
+pip install DPSDV
 ```
 
 ## Quickstart
@@ -41,7 +41,7 @@ save a hierarchical model. We will cover these two steps in this section using a
 function:
 
 ```python3
-from sdv import load_demo
+from DPSDV import load_demo
 
 metadata, tables = load_demo(metadata=True)
 ```
@@ -110,7 +110,7 @@ primary key-foreign key relationships and learn the probability distributions of
 the columns.
 
 ```python3
-from sdv.relational import HMA1
+from DPSDV.relational import HMA1
 
 model = HMA1(metadata)
 model.fit(tables)
@@ -119,7 +119,7 @@ model.fit(tables)
 OR
 
 ```python3
-from sdv.relational import HMA1
+from DPSDV.relational import HMA1
 
 model = HMA1(metadata)
 model.fit(tables, eps=1e2)
@@ -177,4 +177,8 @@ Added DP-SGD
 5. TVAE Model
 
 Added DP-SGD
+
+6. MWEM Model
+
+Added DP privacy
 
