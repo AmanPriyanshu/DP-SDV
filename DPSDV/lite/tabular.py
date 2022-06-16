@@ -142,8 +142,8 @@ class TabularPreset():
                     datum[key] += noise
             if 'scale' in key:
                 if self.eps is not None:
-                    noise = np.random.laplace(loc=0.0, scale=(1/(self.eps)))
-                    datum[key] += np.std(noise)*datum[key]
+                    noise = np.random.laplace(loc=0.0, scale=(1/(self.eps)), size=data.shape[0])
+                    datum[key] = np.sqrt(np.square(np.std(noise)) + np.square(datum[key]))
         self._model.set_parameters(datum)
 
     def _postprocess_sampled(self, sampled):

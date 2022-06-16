@@ -269,8 +269,8 @@ class GaussianCopula(BaseTabularModel):
                     datum[key] += np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(eps)))
             if 'scale' in key:
                 if eps is not None:
-                    noise = np.random.laplace(loc=0.0, scale=(1/(eps)))
-                    datum[key] += np.std(noise)*datum[key]
+                    noise = np.random.laplace(loc=0.0, scale=(1/(eps)), size=data.shape[0])
+                    datum[key] = np.sqrt(np.square(np.std(noise)) + np.square(datum[key]))
         self.set_parameters(datum)
 
     def sample_conditions(self, conditions, batch_size=None, randomize_samples=True,

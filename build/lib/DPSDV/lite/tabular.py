@@ -138,7 +138,12 @@ class TabularPreset():
                     if self.printed==False:
                         print("Applying Laplacian Noise to Covariance Matrix")
                         self.printed = True
-                    datum[key] += np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(self.eps)))
+                    noise = np.random.laplace(loc=0.0, scale=((2*(highest_num+1))/(self.eps)))
+                    datum[key] += noise
+            if 'scale' in key:
+                if self.eps is not None:
+                    noise = np.random.laplace(loc=0.0, scale=(1/(self.eps)))
+                    datum[key] += np.std(noise)*datum[key]
         self._model.set_parameters(datum)
 
     def _postprocess_sampled(self, sampled):

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: DPSDV
-Version: 0.0.1
+Version: 0.0.2
 Summary: Creating a Differential Privacy securing Synthetic Data Generation for tabular, relational and time series data.
 Home-page: https://github.com/AmanPriyanshu/DPSDV
 Author: Aman Priyanshu

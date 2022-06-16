@@ -6,7 +6,7 @@
 
 __author__ = "Aman Priyanshu"
 __email__ = 'amanpriyanshusms2001@gmail.com'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 from DPSDV import constraints, evaluation, metadata, relational, tabular
 from DPSDV.demo import get_available_demos, load_demo
