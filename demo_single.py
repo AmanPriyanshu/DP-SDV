@@ -38,7 +38,7 @@ def compute_results(synthetic_data, data):
 
 performance = []
 print('-'*40,'\n')
-model = TabularPreset(name='FAST_ML', metadata=metadata, eps=1)
+model = TabularPreset(name='FAST_ML', metadata=metadata, eps=0.1)
 model.fit(data)
 synthetic_data = model.sample(num_rows=100)
 print('FAST_ML-DP')
@@ -72,7 +72,7 @@ synthetic_data.to_csv("./single_demo_results/MWEM_dp.csv", index=False)
 
 print('-'*40, '\n')
 model = GaussianCopula()
-model.fit_dp(data, eps=1)
+model.fit_dp(data, eps=0.1)
 synthetic_data = model.sample(num_rows=100)
 print('Gaussian Copula-DP')
 r = {'name':'Gaussian Copula-DP'}
@@ -159,4 +159,4 @@ for key in performance[0].keys():
 		df[key].append(row[key])
 
 df = pd.DataFrame(df)
-df.to_csv("performance_demo_single", index=False)
+df.to_csv("performance_demo_single.csv", index=False)
